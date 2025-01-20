@@ -2,10 +2,18 @@ const express = require("express");
 const moment = require("moment");
 const axios = require("axios");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const app = express();
 const port = 3000;
 
 app.use(bodyParser.json());
+
+// Enable CORS for specific origins
+app.use(cors({
+  origin: ['http:localhost:3000', 'https://palyndrome-check-app.vercel.app.com'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type'],
+}));
 
 const mockDatabase = [];
 
